@@ -18,6 +18,18 @@ namespace KYC
        static public bool InternalCheck(Customer customer) { 
             bool result = true;
 
+            string[] banned = { "ABC", "XYZ"};
+
+            string recipient = customer.UserAccount.LastTransactionRecipient.ToUpper();
+
+            foreach (var keyword in banned)
+            {
+                if (recipient == keyword)
+                {
+                    result = false;
+                    break;
+                }
+            }
             return result;
        }
     }

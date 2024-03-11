@@ -15,6 +15,7 @@ namespace KYC
             result = result && AML.ExternalCheck(customer) && AML.InternalCheck(customer);
             string customerRisk = Risk.GetCustomerCategory(customer);
             if(customerRisk == "High Risk") { result = false; }
+            result = result && Monitoring.CheckTransactionAmount(customer.UserAccount.LastTransactionAmount);
             return result;
         }
 

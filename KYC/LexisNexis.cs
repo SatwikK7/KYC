@@ -12,7 +12,19 @@ namespace KYC
         {
             bool trust = true;
 
+            string[] prohibited = { "AA", "BB", "CC", "DD", "EE" };
+            string recipient = customer.UserAccount.LastTransactionRecipient.ToUpper();
+            foreach (var keyword in prohibited)
+            {
+                if (recipient == keyword)
+                {
+                    trust = false;
+                    break; 
+                }
+            }
+
             return trust;
+   
         }
     }
 }
