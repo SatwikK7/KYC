@@ -27,9 +27,11 @@ namespace KYC
                 if (recipient == keyword)
                 {
                     result = false;
+                    Console.WriteLine("AML internal check --> Failed");
                     break;
                 }
             }
+            Console.WriteLine("AML internal check --> Passed");
             return result;
        }
     }

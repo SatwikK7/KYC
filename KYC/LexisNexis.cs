@@ -22,8 +22,13 @@ namespace KYC
                     break; 
                 }
             }
+            if(trust)
+            {
+                Console.WriteLine("AML external check --> Passed");
+                return trust;
+            }
 
-            return trust;
+            Console.WriteLine("AML external check --> Failed"); return trust;
    
         }
     }

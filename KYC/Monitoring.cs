@@ -11,7 +11,13 @@ namespace KYC
         static public bool CheckTransactionAmount(decimal transactionAmount)
         {
             // Check if transaction amount is more than 100,000
-            return transactionAmount <= 100000;
+            if( transactionAmount <= 100000)
+            {
+                Console.WriteLine("Monitoring --> Passed");
+                return true;
+            }
+                Console.WriteLine("Monitoring --> Failed, You have exceeded your transaction limit");
+                return false;
         }
 
         static public void GetLastLoginDetails(Customer customer)

@@ -11,34 +11,43 @@ Customer user4 = new Customer("Eve", true, 121314, "eve@example.com", "101 Pine 
 
 // Perform KYC checks for each customer
 Customer[] customers = new Customer[] { user1, user2, user3, user4 };
-
+KYCProcess kycProcess = new KYCProcess();
 
 
 foreach (var customer in customers)
 {
+    
     customer.Login();
 
     Console.WriteLine($"Enter recipient's name for {customer.Name}:");
     string recipient = Console.ReadLine();
+ 
 
     Console.WriteLine($"Enter transaction amount for {customer.Name}:");
     decimal amount = decimal.Parse(Console.ReadLine());
 
+    Console.WriteLine("Please enter your signature");
+    string sign = Console.ReadLine();
+
     customer.Transaction(recipient, amount);
+
+    bool kycResult1 = kycProcess.Verify(customer, sign);
+
+    PrintKYCResult(user1, kycResult1);
+
+    Console.WriteLine("Press any key to clear");
+    Console.ReadKey();
+    Console.Clear();
 }
-KYCProcess kycProcess = new KYCProcess();
 
 
-bool kycResult1 = kycProcess.Verify(user1,"John");
-bool kycResult2 = kycProcess.Verify(user2, "Alice");
-bool kycResult3 = kycProcess.Verify(user3, "BOB");
-bool kycResult4 = kycProcess.Verify(user4, "Eve");
+
+
+
 
 // Print KYC results
-PrintKYCResult(user1, kycResult1);
-PrintKYCResult(user2, kycResult2);
-PrintKYCResult(user3, kycResult3);
-PrintKYCResult(user4, kycResult4);
+
+
 
 void PrintKYCResult(Customer customer, bool result)
 {

@@ -12,8 +12,16 @@ namespace KYC
         {
             bool result = true;
 
-            if (customer.Photo==false) { result = false; }
-            if(customer.Name!=signature) { result = false; }
+            if (customer.Photo==false) 
+            { 
+                Console.WriteLine("FintechCompliance --> Failed,Photo Unavailable");
+                result = false; 
+            }
+            if(customer.Name!=signature) 
+            { 
+                Console.WriteLine("FintechCompliance --> Failed,Signature does not match"); 
+                result = false; 
+            }
             return result;
 
         }

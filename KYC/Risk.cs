@@ -14,13 +14,13 @@ namespace KYC
             {
                 return "Low risk";
             }
-            else if (customer.PendingLoan < 500 || customer.CreditScore > 700)
+            else if (customer.PendingLoan > 500 || customer.CreditScore < 700)
             {
-                return "Medium risk";
+                return "High risk";
             }
             else
             {
-                return "High risk";
+                return "Medium risk";
             }
         }
     }
